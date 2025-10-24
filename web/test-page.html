@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Algorithms</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css"
+      integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi"
+      crossorigin="anonymous"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js"
+      integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js"
+      integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/java.min.js"></script>
+    <script>
+      hljs.highlightAll();
+      document.addEventListener("DOMContentLoaded", (event) => {
+        document
+          .querySelectorAll("code.inline")
+          .forEach((el) => hljs.highlightElement(el));
+      });
+    </script>
+  </head>
+  <body>
+    <section>
+      <h1>Format Testing</h1>
+      <p>A test page for formatting.</p>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+      <p>
+        Here is a <a href="index.html">link</a> that points to the table of
+        contents.
+      </p>
+    </section>
+
+    <section>
+      <h2>Strong</h2>
+      <p>
+        <strong>Strong:</strong> Here is some text that is
+        <strong>strong</strong>.
+      </p>
+    </section>
+
+    <section>
+      <h2>Code</h2>
+      <div class="codeblock">
+        <pre><code class="language-java">public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+      </div>
+
+      <div class="codeblock">
+        <pre><code class="language-java">00000000001111111111222222222233333333334444444444555555555566666666667777777777</code></pre>
+      </div>
+      <div class="codeblock">
+        <pre><code>000000000011111111112222222222333333333344444444445555555555666666666677777777778888888888</code></pre>
+      </div>
+
+      <p>
+        Unfortunately it appears that highlight.js does not properly highlight
+        Java code that includes multiple assignments on the same line, separated
+        by commas.
+      </p>
+
+      <div class="codeblock">
+        <pre><code class="language-java">public static void binarySearch(int[] a, int key) {
+    int left = 0, right = a.length;
+    // a[..left] &lt; key, a[right..] &gt; key
+    while (left &lt; right) {
+        var mid = (left + right) &gt;&gt;&gt; 1;
+        var x = a[mid];
+        if (x == key) return mid;
+        if (x &lt; key) left = mid + 1;
+        else right = mid;
+    }
+    return -1;
+}</code></pre>
+      </div>
+
+      <p>
+        For inline code, such as
+        <code class="inline language-java">int x = 5</code>, we just use a code
+        tag without a pre tag.
+      </p>
+      <div class="codeblock">
+        <pre><code class="language-java">/** Merges a[left..mid] and a[mid..right]. */
+public static void merge(int[] a, int left, int mid, int right, int[] t) {
+    var leftLen = mid - left;
+    System.arraycopy(a, left, t, 0, leftLen);
+    int i = 0, j = mid, k = left;
+    while (i &lt; leftLen && j &lt; right)
+        a[k++] = a[j] &gt; t[i] ? t[i++] : a[j++];
+    System.arrayCopy(t, i, a, k, leftLen - i);
+}</code></pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>Math</h2>
+      <p>Here is some inline \(x = 5\) math.</p>
+      <p>And here is a block of math.</p>
+      $$x = 5$$
+      <p>
+        Great! Now we just need some overflowingly-long math. Of course, no line
+        should ever be this long in our actual text when viewed at it's maximum
+        width. However, on a mobile device or otherwise small or zoomed screen,
+        scrolling is necessary.
+      </p>
+      $$x = 5; y = 7; z = 12 \frac{a}{b} \qquad \frac{ab}{cd}\qquad \frac{a +
+      b}{c} = \frac{a}{c} + \frac{b}{c} \qquad \int\limits_{-\infty}^{\infty}\!
+      f(x) \,dx \qquad \int\limits_a^b \!u(x)v'(x)\,dx = u(b)v(b) - u(a)v(a) -
+      \int\limits_a^b\!u'(x)v(x)\,dx$$
+    </section>
+
+    <section>
+      <h2>Tables</h2>
+      <p>Let's start with a rather thin table that should be centered.</p>
+      <div class="tableblock">
+        <table width="100px">
+          <thead>
+            <tr>
+              <th class="right">\(n\)</th>
+              <th class="right">\(2^n\)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="right">\(0\)</td>
+              <td class="right">\(1\)</td>
+            </tr>
+            <tr>
+              <td class="right">\(1\)</td>
+              <td class="right">\(2\)</td>
+            </tr>
+            <tr>
+              <td class="right">\(2\)</td>
+              <td class="right">\(3\)</td>
+            </tr>
+            <tr>
+              <td class="right">\(3\)</td>
+              <td class="right">\(4\)</td>
+            </tr>
+            <tr>
+              <td class="right">\(4\)</td>
+              <td class="right">\(5\)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>And now with a larger table that requires scrolling.</p>
+      <div class="tableblock">
+        <div class="tablescrollblock">
+          <table width="1080px">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alice</td>
+                <td>25</td>
+                <td>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </td>
+              </tr>
+              <tr>
+                <td>Bob</td>
+                <td>25</td>
+                <td>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>SVGs</h2>
+    </section>
+
+    <section>
+      <h2>Images</h2>
+    </section>
+  </body>
+</html>
